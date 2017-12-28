@@ -22,6 +22,11 @@ namespace SampleBA
 
         }
         public Engine Engine { get { return this.Bootstrapper.Engine; } }
+
+        public Command Command { get { return this.Bootstrapper.Command; } }
+
+        public int Result { get; set; }     //Final Result of Installation
+
         /// <summary>
         /// Get or set the path where the bundle is installed.
         /// </summary>
