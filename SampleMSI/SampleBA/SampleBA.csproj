@@ -63,10 +63,17 @@
       <DependentUpon>RootView.xaml</DependentUpon>
     </Compile>
     <Compile Include="RootViewModel.cs" />
+    <Compile Include="Styles.xaml.cs">
+      <DependentUpon>Styles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="RootView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
