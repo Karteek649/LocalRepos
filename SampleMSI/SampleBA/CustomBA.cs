@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 using Threading = System.Windows.Threading;
 using WinForms = System.Windows.Forms;
@@ -40,6 +37,51 @@ namespace SampleBA
 
             this.Engine.Quit(CustomBA.Model.Result);
 
+        }
+
+        public static void Plan(LaunchAction action)
+        {
+            CustomBA.Model.PlannedAction = action;
+            CustomBA.Model.Engine.Plan(CustomBA.Model.PlannedAction);
+        }
+
+        public static void PlanLayout()
+        {
+            // Either default or set the layout directory
+            if (String.IsNullOrEmpty(CustomBA.Model.Command.LayoutDirectory))
+            {
+                CustomBA.Model.LayoutDirectory = Directory.GetCurrentDirectory();
+
+                // Ask the user for layout folder if one wasn't provided and we're in full UI mode
+                if (CustomBA.Model.Command.Display == Display.Full)
+                {
+                    CustomBA.Dispatcher.Invoke((Action)delegate()
+                    {
+                        WinForms.FolderBrowserDialog browserDialog = new WinForms.FolderBrowserDialog();
+                        browserDialog.RootFolder = Environment.SpecialFolder.MyComputer;
+
+                        // Default to the current directory.
+                        browserDialog.SelectedPath = CustomBA.Model.LayoutDirectory;
+                        WinForms.DialogResult result = browserDialog.ShowDialog();
+
+                        if (WinForms.DialogResult.OK == result)
+                        {
+                            CustomBA.Model.LayoutDirectory = browserDialog.SelectedPath;
+                            CustomBA.Plan(CustomBA.Model.Command.Action);
+                        }
+                        else
+                        {
+                            CustomBA.View.Close();
+                        }
+                    }
+                    );
+                }
+            }
+            else
+            {
+                CustomBA.Model.LayoutDirectory = CustomBA.Model.Command.LayoutDirectory;
+                CustomBA.Plan(CustomBA.Model.Command.Action);
+            }
         }
     }
 }

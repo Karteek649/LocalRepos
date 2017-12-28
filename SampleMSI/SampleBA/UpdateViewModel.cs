@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SampleBA
 {
-    class UpdateViewModel : PropertyNotifyBase
+    public class UpdateViewModel : PropertyNotifyBase
     {
         private RootViewModel root;
 

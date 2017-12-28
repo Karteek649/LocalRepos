@@ -9,6 +9,10 @@ using Microsoft.Tools.WindowsInstallerXml.Bootstrapper;
 
 namespace SampleBA
 {
+    public enum Error
+    {
+        UserCancelled = 1223,
+    }
     public class RootViewModel : PropertyNotifyBase
     {
         private ICommand cancelCommand;
@@ -20,6 +24,10 @@ namespace SampleBA
         private InstallationState installState;
         private DetectionState detectState;
 
+        public InstallationViewModel installationViewModel { get; private set; }
+        public UpdateViewModel updateViewModel { get; private set; }
+        public ProgressViewModel progressViewModel { get; private set; }
+
         public RootViewModel()
         {
             installationViewModel = new InstallationViewModel(this);
@@ -27,9 +35,6 @@ namespace SampleBA
             progressViewModel = new ProgressViewModel(this);
         }
 
-        public InstallationViewModel installationViewModel { get; private set; }
-        public UpdateViewModel updateViewModel { get; private set; }
-        public ProgressViewModel progressViewModel { get; private set; }
 
         public IntPtr ViewWindowHandle { get; set; }
 
@@ -92,10 +97,6 @@ namespace SampleBA
             }
         }
 
-        public DetectionState DetectState
-        {
-
-        }
 
         public InstallationState InstallState
         {

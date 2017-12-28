@@ -27,9 +27,7 @@ namespace SampleBA
 
         public int Result { get; set; }     //Final Result of Installation
 
-        /// <summary>
         /// Get or set the path where the bundle is installed.
-        /// </summary>
         public string InstallDirectory
         {
             get
@@ -47,5 +45,42 @@ namespace SampleBA
                 this.Engine.StringVariables[BurnBundleInstallDirectoryVariable] = value;
             }
         }
+
+
+        /// Get the version of the install.
+        public Version Version
+        {
+            get
+            {
+                if (null == this.version)
+                {
+                    this.version = this.Engine.VersionVariables[BurnBundleVersionVariable];
+                }
+
+                return this.version;
+            }
+        }
+
+        /// Get or set the path for the layout to be created.
+        public string LayoutDirectory
+        {
+            get
+            {
+                if (!this.Engine.StringVariables.Contains(BurnBundleLayoutDirectoryVariable))
+                {
+                    return null;
+                }
+
+                return this.Engine.StringVariables[BurnBundleLayoutDirectoryVariable];
+            }
+
+            set
+            {
+                this.Engine.StringVariables[BurnBundleLayoutDirectoryVariable] = value;
+            }
+        }
+
+
+        public LaunchAction PlannedAction { get; set; }
     }
 }
