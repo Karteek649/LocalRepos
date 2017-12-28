@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="475"
              Title="TOSHIBA e-STUDIO AddressBook Viewer Installer"
-             Icon="ObjectInstallerh.ico">
+             Icon="SetupIcon.bmp">
     <Window.Resources>
         <ResourceDictionary Source="Styles.xaml"/>
     </Window.Resources>
@@ -17,7 +17,8 @@
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="341,279,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="0,269,0,0" Stroke="Black" VerticalAlignment="Top" Width="475"/>
         <Label Content="Welcome" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0"/>
-        <Label Content="License" HorizontalAlignment="Left" Margin="95,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0"/>
+        <Label Content="Repair" HorizontalAlignment="Left" Margin="95,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0" Visibility="{Binding RepairEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+        <Label Content="License" HorizontalAlignment="Left" Margin="95,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0" Visibility="{Binding InstallEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
         <Label Content="Settings" HorizontalAlignment="Left" Margin="190,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0"/>
         <Label Content="Install" HorizontalAlignment="Left" Margin="285,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0"/>
         <Label Content="Finish" HorizontalAlignment="Left" Margin="380,23,0,0" VerticalAlignment="Top" Width="95" Padding="20 0 0 0"/>
