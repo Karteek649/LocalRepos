@@ -167,10 +167,10 @@ namespace SampleBA
             }
         }
 
-        public bool LicenseEnabled
-        {
-            get { return this.LicenseCommand.CanExecute(this); }
-        }
+        //public bool LicenseEnabled
+        //{
+        //    get { return this.LicenseCommand.CanExecute(this); }
+        //}
 
         public ICommand CloseCommand
         {
@@ -195,10 +195,10 @@ namespace SampleBA
             }
         }
 
-        public bool InstallEnabled
-        {
-            get { return this.InstallCommand.CanExecute(this); }
-        }
+        //public bool InstallEnabled
+        //{
+        //    get { return this.InstallCommand.CanExecute(this); }
+        //}
 
         public ICommand RepairCommand
         {
