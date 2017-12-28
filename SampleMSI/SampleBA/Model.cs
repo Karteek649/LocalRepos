@@ -16,9 +16,9 @@ namespace SampleBA
 
         public BootstrapperApplication Bootstrapper { get; private set; }
 
-        public Model(BootstrapperApplication ba)
+        public Model(BootstrapperApplication bootStrapper)
         {
-            this.Bootstrapper = ba;
+            this.Bootstrapper = bootStrapper;
 
         }
         public Engine Engine { get { return this.Bootstrapper.Engine; } }
