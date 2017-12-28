@@ -28,6 +28,11 @@ namespace SampleBA
     public class InstallationViewModel : PropertyNotifyBase
     {
         private RootViewModel root;
+        private bool welcomeEnabled = true;
+        private bool licenseEnabled = false;
+        private bool settingsEnabled = false;
+        private bool installEnabled = false;
+        private bool finishEnabled = false;
 
 
         //private Dictionary<string, int> downloadRetries;
@@ -67,6 +72,67 @@ namespace SampleBA
                 {
                     this.message = value;
                     base.OnPropertyChanged("Message");
+                }
+            }
+        }
+
+        public bool WelcomeEnabled
+        {
+            get { return this.welcomeEnabled; }
+            set
+            {
+                if (this.welcomeEnabled != value)
+                {
+                    this.welcomeEnabled = value;
+                    base.OnPropertyChanged("WelcomeEnabled");
+                }
+            }
+        }
+        public bool LicenseEnabled
+        {
+            get { return this.licenseEnabled; }
+            set
+            {
+                if (this.licenseEnabled != value)
+                {
+                    this.licenseEnabled = value;
+                    base.OnPropertyChanged("LicenseEnabled");
+                }
+            }
+        }
+        public bool SettingsEnabled
+        {
+            get { return this.settingsEnabled; }
+            set
+            {
+                if (this.settingsEnabled != value)
+                {
+                    this.settingsEnabled = value;
+                    base.OnPropertyChanged("SettingsEnabled");
+                }
+            }
+        }
+        public bool InstallEnabled
+        {
+            get { return this.installEnabled; }
+            set
+            {
+                if (this.installEnabled != value)
+                {
+                    this.installEnabled = value;
+                    base.OnPropertyChanged("InstallEnabled");
+                }
+            }
+        }
+        public bool FinishEnabled
+        {
+            get { return this.finishEnabled; }
+            set
+            {
+                if (this.finishEnabled != value)
+                {
+                    this.finishEnabled = value;
+                    base.OnPropertyChanged("FinishEnabled");
                 }
             }
         }
